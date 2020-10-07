@@ -1,0 +1,113 @@
+{% extends 'layouts/base-blog.html' %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>OLA</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:300,400" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+	<!--================ Start top-section Area =================-->
+    {% block banner %}
+	<section class="banner-area relative">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row justify-content-lg-end align-items-center banner-content">
+				<div class="col-lg-5">
+					<h1 class="text-white">Notre Blog</h1>
+					<p>Découvrez ici tout nos articles</p>
+				</div>
+			</div>
+		</div>
+	</section>
+    {% endblock %}
+	<!--================ End top-section Area =================-->
+{% block main %}
+    <!--================Blog Area =================-->
+    <section class="blog_area section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        {% for category in category %}
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{ category.banner.url }}" alt="">
+                                <a  class="blog_item_date">
+                                    <h3>{{ category.created_at|date:'d' }}</h3>
+                                    <p>{{ category.created_at|date:'M' }}</p>
+                                </a>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="blog-details.html">
+                                    <h2>{{ category.title }}</h2>
+                                </a>
+                                <p>{{ category.body | truncatewords:35}}</p>
+                                <ul class="blog-info-link">
+                                    <li><a><i class="fa fa-user"></i>{{ category.category }}</a></li>
+                                    <li><a href="#"><i class="fa fa-comment-o"></i> 03 Commentaires</a></li>
+                                </ul>
+                            </div>
+                        </article>
+                    {% endfor %}
+
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                {% if category.has_previous %}
+                                <li class="page-item">
+                                    <a href="?page=1" class="page-link">1</a>
+                                </li>
+                                    <li class="page-item">
+                                    <a href="?page={{ category.previous_page_number }}" class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-long-arrow-left"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                <li class="page-item">
+                                    <p>page {{ category.number }} of {{ category.paginator.num_pages }}</p>
+                                </li>
+                            {% if category.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{ category.next_page_number }}" class="page-link" aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-long-arrow-right"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="?page={{ category.paginator.num_pages }}" class="page-link">last</a>
+                                </li>
+                            {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+    </section>
+    <!--================Blog Area =================-->
+{% endblock %}
+
+</body>
+
+</html>
