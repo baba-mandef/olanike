@@ -1,0 +1,254 @@
+{% extends 'layouts/base-blog.html' %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>OLA</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:300,400" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+	<!--================ Start top-section Area =================-->
+    {% block banner %}
+	<section class="banner-area relative">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row justify-content-lg-end align-items-center banner-content">
+				<div class="col-lg-5">
+					<h1 class="text-white">Notre Blog</h1>
+					<p>Découvrez ici tout nos articles</p>
+				</div>
+			</div>
+		</div>
+	</section>
+    {% endblock %}
+	<!--================ End top-section Area =================-->
+{% block main %}
+    <!--================Blog Area =================-->
+    <section class="blog_area section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        {% for post in posts %}
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{ post.banner.url }}" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>{{ post.created_at|date:'d' }}</h3>
+                                    <p>{{ post.created_at|date:'M' }}</p>
+                                </a>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="blog-details.html">
+                                    <h2>{{ post.title }}</h2>
+                                </a>
+                                <p>{{ post.body | truncatewords:30}}</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i>{{ post.category }}</a></li>
+                                    <li><a href="#"><i class="fa fa-comment-o"></i> 03 Commentaires</a></li>
+                                </ul>
+                            </div>
+                        </article>
+                    {% endfor %}
+
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                {% if posts.has_previous %}
+                                <li class="page-item">
+                                    <a href="?page=1" class="page-link">1</a>
+                                </li>
+                                    <li class="page-item">
+                                    <a href="?page={{ posts.previous_page_number }}" class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-long-arrow-left"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                <li class="page-item">
+                                    <p>page {{ posts.number }} of {{ posts.paginator.num_pages }}</p>
+                                </li>
+                            {% if posts.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{ posts.next_page_number }}" class="page-link" aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-long-arrow-right"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="?page={{ posts.paginator.num_pages }}" class="page-link">last</a>
+                                </li>
+                            {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Tapez quelque chose...">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button primary-btn w-100" type="submit">Rechercher</button>
+                            </form>
+                        </aside>
+
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Category</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Enfants démunis</p>
+                                        <p>(37)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Santé</p>
+                                        <p>(10)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Education</p>
+                                        <p>(03)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Travaux forcé</p>
+                                        <p>(11)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Inspiration</p>
+                                        <p>(21)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Malnutrition</p>
+                                        <p>(09)</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Article récents</h3>
+                            <div class="media post_item">
+                                <img src="img/blog/popular-post/post1.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>Le travail des enfants</h3>
+                                    </a>
+                                    <p>12 janvier 2019</p>
+                                </div>
+                            </div>
+                            <div class="media post_item">
+                                <img src="img/blog/popular-post/post1.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>Le travail des enfants</h3>
+                                    </a>
+                                    <p>12 janvier 2019</p>
+                                </div>
+                            </div>
+                            <div class="media post_item">
+                                <img src="img/blog/popular-post/post1.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>Le travail des enfants</h3>
+                                    </a>
+                                    <p>12 janvier 2019</p>
+                                </div>
+                            </div>
+                            <div class="media post_item">
+                                <img src="img/blog/popular-post/post1.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>Le travail des enfants</h3>
+                                    </a>
+                                    <p>12 janvier 2019</p>
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class="single_sidebar_widget tag_cloud_widget">
+                            <h4 class="widget_title">Tags</h4>
+                            <ul class="list">
+                                <li>
+                                    <a href="#">projets</a>
+                                </li>
+                                <li>
+                                    <a href="#">Amour</a>
+                                </li>
+                                <li>
+                                    <a href="#">Aides</a>
+                                </li>
+                                <li>
+                                    <a href="#">inspiration</a>
+                                </li>
+                                <li>
+                                    <a href="#">vie</a>
+                                </li>
+                                <li>
+                                    <a href="#">enfant</a>
+                                </li>
+                                <li>
+                                    <a href="#">travail</a>
+                                </li>
+                                <li>
+                                    <a href="#">volontariat</a>
+                                </li>
+                            </ul>
+                        </aside>
+
+
+                        <aside class="single_sidebar_widget newsletter_widget">
+                            <h4 class="widget_title">Newsletter</h4>
+
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Entrer votre email" required>
+                                </div>
+                                <button class="button primary-btn w-100" type="submit">S'inscrire</button>
+                            </form>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+{% endblock %}
+
+</body>
+
+</html>
