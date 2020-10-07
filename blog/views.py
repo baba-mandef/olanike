@@ -25,5 +25,7 @@ def categories(request, cate):
 
 
 def details(request, id):
-    post = Post.object.get(id=id)
-    return render(request, 'details.html', {'id': id})
+    post = Post.objects.get(pk=id)
+    last = Post.objects.order_by('created_at')[:5]
+    cat = Category.objects.all()
+    return render(request, 'details.html', {'post': post, 'last': last, 'cat': cat})
