@@ -18,6 +18,15 @@ class Post(models.Model):
         return self.title
 
 
+class Comment(models.Model):
+    id = models.AutoField(primary_key=True)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    body = models.TextField()
+    author_name = models.CharField(max_length=20)
+    author_pic = models.ImageField(upload_to='static/img/blog/comment')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 class Category(models.Model):
     """
     post category model
