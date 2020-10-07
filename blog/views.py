@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from blog.models import Post, Category
+from blog.models import Post, Category, Comment
+#  ToDO : add form
 
 
 def posts(request):
@@ -28,4 +29,5 @@ def details(request, id):
     post = Post.objects.get(pk=id)
     last = Post.objects.order_by('created_at')[:5]
     cat = Category.objects.all()
-    return render(request, 'details.html', {'post': post, 'last': last, 'cat': cat})
+    comments = Comment.objects.filter(post=id)
+    return render(request, 'details.html', {'post': post, 'last': last, 'cat': cat, 'comments': comments})
