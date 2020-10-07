@@ -1,4 +1,4 @@
-{% extends 'layouts/base-blog.html' %}
+{% extends 'layouts/base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -415,17 +415,18 @@
 							>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes
 							>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes>
 						</p>
-						<a href="#" class="primary-btn2">Voir plus</a>
+						<a href="/blog" class="primary-btn2">Voir plus</a>
 					</div>
 				</div>
+                {% for last in latest %}
 				<div class="col-lg-4 col-md-6 single-blog">
 					<div class="thumb">
-						<img class="img-fluid" src="img/b1.jpg" alt="">
+						<img class="img-fluid" src="{{ last.banner.url }}" alt="">
 					</div>
 					<div class="single-blog-info">
-						<p class="tag"><span>Enfant démunis</span><span> 17 mars 2019</span></p>
+						<p class="tag"><span>{{ last.category }}</span><span> {{ last.created_at|date:'d F Y' }}</span></p>
 						<a href="blog-single.html">
-							<h4>Vidomegon battue sauvagement par sa patrone</h4>
+							<h4>{{ last.title}}</h4>
 						</a>
 						<div class="meta-bottom d-flex">
 							<a href="#" class="mr-3"><span class="ti-comments mr-2"></span> 02 Commentaire</a>
@@ -433,22 +434,8 @@
 						</div>
 					</div>
 				</div>
+                {% endfor %}
 
-				<div class="col-lg-4 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid" src="img/b1.jpg" alt="">
-					</div>
-					<div class="single-blog-info">
-						<p class="tag"><span>Enfant démunis</span><span> 17 mars 2019</span></p>
-						<a href="blog-single.html">
-							<h4>Vidomegon battue sauvagement par sa patrone</h4>
-						</a>
-						<div class="meta-bottom d-flex">
-							<a href="#" class="mr-3"><span class="ti-comments mr-2"></span> 02 Commentaires</a>
-							<a href="#"> <span class="ti-eye mr-2"></span> 05 Vues</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>
