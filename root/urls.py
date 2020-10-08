@@ -5,5 +5,6 @@ from root.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('blog/', include('blog.urls'))  # add blog path
+    path('blog/', include('blog.urls')),  # add blog path
+    path('event/', include('event.urls')),  # add event path
 ]
