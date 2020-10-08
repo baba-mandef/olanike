@@ -13,6 +13,7 @@ class Post(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)  # post category
     created_at = models.DateTimeField(auto_now_add=True,)
     updated_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey('Author', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -20,11 +21,21 @@ class Post(models.Model):
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     body = models.TextField()
     author_name = models.CharField(max_length=20)
-    author_pic = models.ImageField(upload_to='static/img/blog/comment')
+    author_pic = models.ImageField(upload_to='static/img/blog/comment', default='static/img/blog/comment/d.png')
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Author(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    bio = models.TextField()
+    picture = models.ImageField(upload_to='static/img/blog/author')
+
+    def __str__(self):
+        return self.name
 
 
 class Category(models.Model):

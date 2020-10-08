@@ -53,12 +53,12 @@
                                 <img class="card-img rounded-0" src="{{ category.banner.url }}" alt="">
                                 <a  class="blog_item_date">
                                     <h3>{{ category.created_at|date:'d' }}</h3>
-                                    <p>{{ category.created_at|date:'M' }}</p>
+                                    <p style="color: white">{{ category.created_at|date:'M' }}</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="blog-details.html">
+                                <a class="d-inline-block" href="/blog/post/{{ category.post_id }}">
                                     <h2>{{ category.title }}</h2>
                                 </a>
                                 <p>{{ category.body | truncatewords:35}}</p>
@@ -68,6 +68,8 @@
                                 </ul>
                             </div>
                         </article>
+                            {% empty %}
+                            <h4>Aucun article</h4>
                     {% endfor %}
 
                         <nav class="blog-pagination justify-content-center d-flex">

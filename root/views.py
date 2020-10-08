@@ -7,4 +7,4 @@ def home(request):
     Home view function
     """
     latest = Post.objects.order_by('created_at')[:2]
-    return render(request, 'home.html', {'latest' : latest})
+    return render(request, 'home.html', {'latest' : latest,})
