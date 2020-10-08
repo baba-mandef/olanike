@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from blog.models import Post, Category, Comment
-#  ToDO : add form
+from blog.models import Post, Category, Comment, Author
+from blog.forms import CommentForm
 
 
 def posts(request):
@@ -26,8 +26,17 @@ def categories(request, cate):
 
 
 def details(request, id):
-    post = Post.objects.get(pk=id)
+    # post = Post.objects.get(pk=id)
+    post = get_object_or_404(Post, post_id=id)
     last = Post.objects.order_by('created_at')[:5]
     cat = Category.objects.all()
     comments = Comment.objects.filter(post=id)
-    return render(request, 'details.html', {'post': post, 'last': last, 'cat': cat, 'comments': comments})
+    form = CommentForm
+    if request.method == 'POST':
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+    author = Author.objects.get(pk=post.author.pk)
+    return render(request, 'details.html', {'post': post, 'last': last, 'cat': cat, 'comments': comments, 'form': form, 'author': author})
