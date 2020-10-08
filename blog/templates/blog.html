@@ -53,12 +53,12 @@
                                 <img class="card-img rounded-0" src="{{ post.banner.url }}" alt="">
                                 <a  class="blog_item_date">
                                     <h3>{{ post.created_at|date:'d' }}</h3>
-                                    <p>{{ post.created_at|date:'M' }}</p>
+                                    <p style="color: white">{{ post.created_at|date:'M' }}</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="blog-details.html">
+                                <a class="d-inline-block" href="/blog/post/{{ post.post_id }}">
                                     <h2>{{ post.title }}</h2>
                                 </a>
                                 <p>{{ post.body | truncatewords:30}}</p>
@@ -68,6 +68,8 @@
                                 </ul>
                             </div>
                         </article>
+                            {% empty %}
+                            <h4> Aucun article</h4>
                     {% endfor %}
 
                         <nav class="blog-pagination justify-content-center d-flex">
@@ -125,12 +127,14 @@
                             <div class="media post_item">
                                 <img src="{{ last.banner.url }}" height="80" width="80" alt="post">
                                 <div class="media-body">
-                                    <a href="blog-details.html">
+                                    <a href="/blog/post/{{ last.post_id }}">
                                         <h3>{{ last.title}}</h3>
                                     </a>
                                     <p>{{ last.created_at|date:'d F Y'}}</p>
                                 </div>
                             </div>
+                                {% empty %}
+                                <h6>Aucun article</h6>
                             {% endfor %}
                         </aside>
                         <aside class="single_sidebar_widget tag_cloud_widget">
@@ -140,6 +144,9 @@
                                     <li>
                                     <a href="posts/{{ cat }}">{{ cat }}</a>
                                 </li>
+                                    {% empty %}
+                                <h6>Vide</h6>
+
                                 {% endfor %}
                             </ul>
                         </aside>
