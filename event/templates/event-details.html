@@ -1,3 +1,4 @@
+{% extends 'layouts/base-event.html' %}
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -18,65 +19,11 @@
 	<title>OLA</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:300,400" rel="stylesheet">
-	<!--
-			CSS
-			============================================= -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/nice-select.css">
-	<link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-	<!--================ Start Header Area =================-->
-	<header class="default-header">
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="container">
-				<a class="navbar-brand" href="index.html">
-					<img src="img/logo.png" alt="">
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="fa fa-bars"></span>
-				</button>
-
-				<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-					<ul class="navbar-nav">
-						<li><a  href="index.html">Accueil</a></li>
-						<!-- <li><a href="about.html">A propos</a></li> -->
-						<li><a href="causes.html">Causes</a></li>
-						<li><a class="active" href="event.html">Evennement</a></li>
-						<li><a  href="blog.html">Notre blog</a></li>
-						<!-- <li class="dropdown">
-							<a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-								Pages
-							</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="event-details.html">Event Details</a>
-								<a class="dropdown-item" href="elements.html">Elements</a>
-							</div>
-						</li> -->
-						<!-- <li class="dropdown">
-							<a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-								Blog
-							</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="blog.html">Blog</a>
-								<a class="dropdown-item" href="blog-details.html">Blog Details</a>
-							</div>
-						</li> -->
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
-	<!--================ End Header Area =================-->
-
+	{% block banner %}
 	<!--================ start banner Area =================-->
 	<section class="banner-area relative">
 		<div class="overlay overlay-bg"></div>
@@ -90,35 +37,28 @@
 		</div>
 	</section>
 	<!--================ End banner Area =================-->
-
+    {% endblock %}
+    {% block main %}
 	<!--================ Start Recent Event Area =================-->
 	<section class="event_details section-gap-top">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
-					<img src="img/event.jpg" alt="" class="img-fluid">
+					<img src="{{ event.banner.url }}" alt="" class="img-fluid">
 				</div>
 			</div>
 
-
+x
 			<div class="event_content">
 				<div class="row justify-content-center">
 					<div class="col-lg-8">
 						<div class="right_content">
-							<h2>Déjeuner avec les malvoyants au CPSA</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit minus id accusantium corrupti dignissimos iste neque nulla vitae officiis molestiae autem natus, itaque vero cum quos sunt odit! Doloremque, non.
-							</p>
-							<h4 class="mb-20 mt-40">Description</h4>
-							<p>
+							<h2>{{ event.title}}</h2>
+							<h4 class="mb-20 mt-40" style="text-decoration: underline">Description</h4>
+							<p style="text-align: justify">
 
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat voluptate velit maxime blanditiis, quaerat non eum sapiente sint voluptatum aliquam aperiam hic harum temporibus consectetur, reiciendis deleniti quae aut obcaecati.
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum repudiandae nobis officia iure, esse rerum ab doloremque. Ex accusantium necessitatibus sequi voluptates excepturi itaque provident! Quam nulla assumenda dolores laborum.
+                                {{ event.description }}
 
-							</p>
-							<p>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel magni vitae eaque enim adipisci facilis dolores velit voluptate quibusdam harum. Facere dolorum similique modi doloribus enim, atque dignissimos quidem exercitationem?
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit illum eius repudiandae vel fugiat autem esse, molestias aperiam recusandae maxime neque consectetur doloribus corrupti optio deleniti voluptates ullam, aut saepe.
-									
 							</p>
 						</div>
 					</div>
@@ -129,8 +69,8 @@
 									<i class="ti-time"></i>
 									Heure de début
 								</h5>
-								<div class="ml-30">13h00</div>
-								<div class="ml-30">03 janvier 2021</div>
+								<div class="ml-30">{{ event.start_at|date:'H' }}h{{ event.start_at|date:'m'}}</div>
+								<div class="ml-30">{{ event.start_at|date:'d F Y' }}</div>
 							</div>
 
 							<div class="mb-40">
@@ -138,8 +78,8 @@
 									<i class="ti-check-box"></i>
 									Fin
 								</h5>
-								<div class="ml-30">14h45</div>
-								<div class="ml-30">03 janvier 2021</div>
+								<div class="ml-30">{{ event.finish_at|date:'H' }}h{{ event.finish_at|date:'m'}}</div>
+								<div class="ml-30">{{ event.finish_at|date:'d F Y'}}</div>
 							</div>
 
 							<div class="">
@@ -147,7 +87,7 @@
 									<i class="ti-location-pin"></i>
 									Address
 								</h5>
-								<div class="ml-30">C/316 Segbeya Nord</div>
+								<div class="ml-30">{{ event.adress}}</div>
 							</div>
 						</div>
 					</div>
@@ -156,174 +96,7 @@
 		</div>
 	</section>
 	<!--================ End Recent Event Area =================-->
-
-	<!--================ Start Instagram Area =================-->
-	<!-- <section class="instagram-area section-gap-top">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6">
-					<div class="section-title">
-						<h2><span>Follow</span> Us</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="instagram-slider owl-carousel">
-			<a href="img/instagram/i1.jpg" class="single-instagram d-block img-pop-up">
-				<div class="instagram-img">
-					<img src="img/instagram/i1.jpg" alt="">
-					<div class="instagram-text">
-						<i class="ti-instagram"></i>
-					</div>
-				</div>
-			</a>
-			<a href="img/instagram/i2.jpg" class="single-instagram d-block img-pop-up">
-				<div class="instagram-img">
-					<img src="img/instagram/i2.jpg" alt="">
-					<div class="instagram-text">
-						<i class="ti-instagram"></i>
-					</div>
-				</div>
-			</a>
-			<a href="img/instagram/i3.jpg" class="single-instagram d-block img-pop-up">
-				<div class="instagram-img">
-					<img src="img/instagram/i3.jpg" alt="">
-					<div class="instagram-text">
-						<i class="ti-instagram"></i>
-					</div>
-				</div>
-			</a>
-			<a href="img/instagram/i4.jpg" class="single-instagram d-block img-pop-up">
-				<div class="instagram-img">
-					<img src="img/instagram/i4.jpg" alt="">
-					<div class="instagram-text">
-						<i class="ti-instagram"></i>
-					</div>
-				</div>
-			</a>
-			<a href="img/instagram/i5.jpg" class="single-instagram d-block img-pop-up">
-				<div class="instagram-img">
-					<img src="img/instagram/i5.jpg" alt="">
-					<div class="instagram-text">
-						<i class="ti-instagram"></i>
-					</div>
-				</div>
-			</a>
-		</div>
-	</section> -->
-	<!--================ End Instagram Area =================-->
-
-	<!--================ Start CTA Area =================-->
-	<!-- <div class="cta-area">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-7">
-					<p class="top_text">Subscribe now</p>
-					<h1>Subscribe Now And Receive The
-						Weekly Newsletter </h1>
-					<div id="mc_embed_signup">
-						<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-						 method="get">
-							<div class="row align-items-center">
-								<div class="col-lg-5 mb-lg-0 mb-3">
-									<input class="form-control" placeholder="Your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your name'"
-									 required="" type="email" />
-								</div>
-								<div class="col-lg-5 mb-lg-0 mb-3">
-									<input class="form-control" name="EMAIL" placeholder="Your Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email'"
-									 required="" type="email" />
-								</div>
-								<div class="col-lg-2">
-									<button class="primary-btn" type="submit">Subscribe</button>
-									<div style="position: absolute; left: -5000px;">
-										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text" />
-									</div>
-
-									<div class="info"></div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!--================ End CTA Area =================-->
-
-	<!--================ start footer Area =================-->
-	<footer class="footer">
-		<div class="footer-area">
-			<div class="container">
-				<div class="row section_gap">
-					<div class="col-lg-5 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title large_title">A propos</h4>
-							<p>
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit molestiae beatae quam deleniti iste aut porro ad, ab vero pariatur molestias ex officiis eaque soluta error ipsum animi similique.
-							</p>
-							<p>
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="http://henriparaiso.cf" target="_blank">Sadi Henri Paraiso</a>
-							</p>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Lien rapides</h4>
-							<ul class="list">
-								<li><a href="causes.html">Objectifs</a></li>
-								<li><a href="event.html">Evennement</a></li>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="contact.html">contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Contactez-nous</h4>
-							<div class="ml-5">
-								<p class="sm-head">
-									<span class="fa fa-location-arrow"></span>
-									siege
-								</p>
-								<p>123, Porto, Novo</p>
-
-								<p class="sm-head">
-									<span class="fa fa-phone"></span>
-									Numero de téléphone
-								</p>
-								<p>
-									+123 456 7890
-								</p>
-
-								<p class="sm-head">
-									<span class="fa fa-envelope"></span>
-									Email
-								</p>
-								<p>
-									pariso03henri@gmail.com.com
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!--================ End footer Area =================-->
-
-	<script src="js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/parallax.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/countdown.js"></script>
-	<script src="js/jquery.sticky.js"></script>
-	<script src="js/main.js"></script>
+{% endblock %}
 </body>
 
 </html>

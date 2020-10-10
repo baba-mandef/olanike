@@ -57,22 +57,23 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="single_upcoming_event">
+                        {% for event in events %}
 						<div class="row align-items-center">
 							<div class="col-lg-6 col-md-6">
 								<figure>
-									<img class="img-fluid w-100" src="img/event/e1.jpg" alt="">
+									<img class="img-fluid w-100" src="{{ event.banner.url }}" alt="">
 									<div class="date">
-										17 Mars
+                                        {{ event.start_at|date:"d M"}}
 									</div>
 								</figure>
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="content_wrapper">
-									<h3 class="title">
-										<a href="event-details.html">Déjeuner avec les malvoyants au CPSA</a>
-									</h3>
+									<h4 class="title">
+										<a href="/events/event/{{ event.id }}">{{ event.title}}</a>
+									</h4>
 									<p>
-										Déjeuner avec les malvoyants au CPSA
+                                        {{ event.adress}}
 									</p>
 									<div class="d-flex count_time justify-content-lg-start justify-content-center" id="clockdiv1">
 										<div class="single_time">
@@ -88,40 +89,49 @@
 											<p>Minutes</p>
 										</div>
 									</div>
-									<a href="event-details.html" class="primary-btn2">Voir plus</a>
+
 								</div>
 							</div>
 						</div>
 					</div>
+                    {% endfor %}
 				</div>
 
 			</div>
 		</div>
 
-		<nav class="blog-pagination justify-content-center d-flex">
-			<ul class="pagination">
-				<li class="page-item">
-					<a href="#" class="page-link" aria-label="Previous">
-						<span aria-hidden="true">
-							<span class="fa fa-long-arrow-left"></span>
-						</span>
-					</a>
-				</li>
-				<li class="page-item">
-					<a href="#" class="page-link">1</a>
-				</li>
-				<li class="page-item active">
-					<a href="#" class="page-link">2</a>
-				</li>
-				<li class="page-item">
-					<a href="#" class="page-link" aria-label="Next">
-						<span aria-hidden="true">
-							<span class="fa fa-long-arrow-right"></span>
-						</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
+		 <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                {% if events.has_previous %}
+                                <li class="page-item">
+                                    <a href="?page=1" class="page-link">1</a>
+                                </li>
+                                    <li class="page-item">
+                                    <a href="?page={{ events.previous_page_number }}" class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-long-arrow-left"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                <li class="page-item">
+                                    <p>page {{ events.number }} sur {{ events.paginator.num_pages }}</p>
+                                </li>
+                            {% if events.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{ events.next_page_number }}" class="page-link" aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-long-arrow-right"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="?page={{ events.paginator.num_pages }}" class="page-link">last</a>
+                                </li>
+                            {% endif %}
+                            </ul>
+                        </nav>
+
 	
 
 	</section>
