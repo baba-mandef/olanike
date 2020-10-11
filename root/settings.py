@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ola.blog',
-    'crispy_forms',
     'ola.event',
+    'ola.home',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
