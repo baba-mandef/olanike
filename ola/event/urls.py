@@ -1,5 +1,5 @@
 from django.urls import path
-from event.views import event, details
+from ola.event.views import event, details
 
 urlpatterns = [
     path('', event, name='event'),

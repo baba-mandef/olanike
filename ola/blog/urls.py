@@ -1,5 +1,5 @@
 from django.urls import path
-from blog.views import posts, categories, details
+from ola.blog.views import posts, categories, details
 
 urlpatterns = [
 

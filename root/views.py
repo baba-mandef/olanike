@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from blog.models import Post
-from event.models import Event
+from ola.blog.models import Post
+from ola.event.models import Event
 
 
 def home(request):
