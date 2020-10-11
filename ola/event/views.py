@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from event.models import Event
+from ola.event.models import Event
 
 
 def event(request):

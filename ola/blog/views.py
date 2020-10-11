@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from blog.models import Post, Category, Comment, Author
-from blog.forms import CommentForm
+from ola.blog.models import Post, Category, Comment, Author
+from ola.blog.forms import CommentForm
 
 
 def posts(request):
