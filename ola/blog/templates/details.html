@@ -66,7 +66,13 @@
           </div>
           <div class="navigation-top">
             <div class="d-sm-flex justify-content-between text-center">
-              <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>4likes</p>
+              {% if last.view == 0 %}
+							<p class="mr-3"><span class="ti-eye mr-2">Aucun lecteur</span></p>
+                            {% elif post.view == 1%}
+							<p class="mr-3"><span class="ti-eye mr-2"> {{ post.view }} Personne a lu</span></p>
+                            {% else %}
+							<p class="mr-3"><span class="ti-eye mr-2"> {{ post.view }} Personnes ont lu</span></p>
+                        {% endif %}
               <div class="col-sm-4 text-center my-2 my-sm-0">
                 <p class="comment-count"><span class="align-middle"><i class="fa fa-comment-o"></i></span>{{ comments|length}} commentaires</p>
               </div>
@@ -148,9 +154,14 @@
                     {{ form.body|as_crispy_field }}
                   </div>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group">
                       {{form.author_name|as_crispy_field}}
+                  </div>
+                </div>
+                   <div class="col-6">
+                  <div class="form-group">
+                      {{form.author_pic|as_crispy_field}}
                   </div>
                 </div>
               </div>
