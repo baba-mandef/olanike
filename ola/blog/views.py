@@ -39,4 +39,6 @@ def details(request, id):
             new_comment.post = post
             new_comment.save()
     author = Author.objects.get(pk=post.author.pk)
+    post.view = post.view+1
+    post.save()
     return render(request, 'details.html', {'post': post, 'last': last, 'cat': cat, 'comments': comments, 'form': form, 'author': author})
