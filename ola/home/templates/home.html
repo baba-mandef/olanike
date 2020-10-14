@@ -285,6 +285,7 @@
                 {% endfor %}
 
 			</div>
+        </div>
 	</section>
 	<!--================ End Upcoming Event Area =================-->
 
@@ -312,9 +313,19 @@
 						<a href="/blog/post/{{ last.post_id }}">
 							<h4>{{ last.title}}</h4>
 						</a>
+                        {% if last.view == 0 %}
 						<div class="meta-bottom d-flex">
-							<a href="/blog/post/{{ last.post_id }}" class="mr-3"> Lire cet article</a>
+							<a href="/blog/post/{{ last.post_id }}" class="mr-3">Lire cet article</a>
 						</div>
+                            {% elif last.view == 1%}
+                             <div class="meta-bottom d-flex">
+							<p class="mr-3"><span class="ti-eye mr-2"> {{ last.view }} Personne a lu</span></p>
+						</div>
+                            {% else %}
+                            <div class="meta-bottom d-flex">
+							<p class="mr-3"><span class="ti-eye mr-2"> {{ last.view }} Personnes ont lu</span></p>
+						</div>
+                        {% endif %}
 					</div>
 				</div>
                 {% endfor %}
