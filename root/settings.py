@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ola.event',
     'ola.home',
     'crispy_forms',
+    'ola.cause'
 ]
 
 MIDDLEWARE = [
