@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>OLA</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:300,400" rel="stylesheet">
+	<!--
+			CSS
+			============================================= -->
+    {% block static-css %}
+	<link rel="stylesheet" href="{%static "css/font-awesome.min.css"%}">
+	<link rel="stylesheet" href="{% static "css/themify-icons.css"%}">
+	<link rel="stylesheet" href="{% static "css/bootstrap.css"%}">
+	<link rel="stylesheet" href="{% static "css/owl.carousel.css" %}">
+	<link rel="stylesheet" href="{%static "css/magnific-popup.css" %}">
+	<link rel="stylesheet" href="{%static "css/nice-select.css"%}">
+	<link rel="stylesheet" href="{%static "css/main.css" %}">
+    {% endblock %}
+</head>
+
+<body>
+{% block header %}
+	<!--================ Start Header Area =================-->
+	<header class="default-header">
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class="container">
+				<a class="navbar-brand" href="/">
+					<img src="img/logo.png" alt="">
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="fa fa-bars"></span>
+				</button>
+
+				<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+					<ul class="navbar-nav">
+                        {% block ul %}
+						<li><a href="/">Accueil</a></li>
+
+						<li><a href="/causes" class="active">Causes</a></li>
+						<li><a href="/events">Evennement</a></li>
+						<li><a href="/blog">Notre blog</a></li>
+					    {% endblock %}
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+{% endblock %}
+	<!--================ End Header Area =================-->
+
+	<!--================ start banner Area =================-->
+{% block banner %}
+
+{% endblock %}
+	<!--================ End banner Area =================-->
+
+    {% block main %}
+    {% endblock %}
+
+{% block footer %}
+	<!--================ start footer Area =================-->
+	<footer class="footer">
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap">
+					<div class="col-lg-5 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">A propos</h4>
+							<p>
+								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit molestiae beatae quam deleniti iste aut porro ad, ab vero pariatur molestias ex officiis eaque soluta error ipsum animi similique.
+							</p>
+							<p>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="http://henriparaiso.cf" target="_blank">Sadi Henri Paraiso</a>
+							</p>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Lien rapides</h4>
+							<ul class="list">
+								<li><a href="causes.html">Objectifs</a></li>
+								<li><a href="event.html">Evennement</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="contact.html">contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contactez-nous</h4>
+							<div class="ml-5">
+								<p class="sm-head">
+									<span class="fa fa-location-arrow"></span>
+									siege
+								</p>
+								<p>123, Porto, Novo</p>
+
+								<p class="sm-head">
+									<span class="fa fa-phone"></span>
+									Numero de téléphone
+								</p>
+								<p>
+									+123 456 7890
+								</p>
+
+								<p class="sm-head">
+									<span class="fa fa-envelope"></span>
+									Email
+								</p>
+								<p>
+									pariso03henri@gmail.com.com
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area =================-->
+{% endblock %}
+
+{% block static-js %}
+<script src="{%static "js/vendor/jquery-2.2.4.min.js"%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+    <script src="{%static "js/vendor/bootstrap.min.js"%}"></script>
+    <script src="{%static "js/jquery.ajaxchimp.min.js"%}"></script>
+	<script src="{%static "js/parallax.min.js" %}"></script>
+	<script src="{%static "js/owl.carousel.min.js" %}"></script>
+	<script src="{%static "js/isotope.pkgd.min.js" %}"></script>
+	<script src="{%static "js/jquery.nice-select.min.js" %}"></script>
+	<script src="{%static "js/jquery.magnific-popup.min.js" %}"></script>
+	<script src="{%static "js/countdown.js" %}"></script>
+	<script src="{%static "js/jquery.sticky.js" %}"></script>
+	<script src="{%static "js/main.js" %}"></script>
+
+{% endblock %}
+</body>
+
+</html>
