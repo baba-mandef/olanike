@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('ola.home.urls')),
     path('blog/', include('ola.blog.urls')),  # add blog path
     path('events/', include('ola.event.urls')),  # add event path
+    path('causes/', include('ola.cause.urls')),  # add cause route
 
 ]
 if settings.DEBUG:

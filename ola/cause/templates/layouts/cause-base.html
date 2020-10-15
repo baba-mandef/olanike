@@ -39,7 +39,7 @@
 	<header class="default-header">
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="/">
 					<img src="img/logo.png" alt="">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -50,11 +50,11 @@
 				<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 					<ul class="navbar-nav">
                         {% block ul %}
-						<li><a  href="/">Accueil</a></li>
+						<li><a href="/">Accueil</a></li>
 
-						<li><a href="/causes">Causes</a></li>
+						<li><a href="/causes" class="active">Causes</a></li>
 						<li><a href="/events">Evennement</a></li>
-						<li><a href="/blog" class="active">Notre blog</a></li>
+						<li><a href="/blog">Notre blog</a></li>
 					    {% endblock %}
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
@@ -72,7 +72,6 @@
 	<!--================ End banner Area =================-->
 
     {% block main %}
-
     {% endblock %}
 
 {% block footer %}
