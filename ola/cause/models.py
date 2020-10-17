@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Cause(models.Model):
-    id = models.AutoField(primay_key=True)
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     banner = models.ImageField(upload_to='cause_pics')
     goal = models.IntegerField()
@@ -14,7 +14,7 @@ class Cause(models.Model):
 
 
 class Category(models.Model):
-    id = models.AutoField(primay_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
 
     def __str__(self):
