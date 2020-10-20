@@ -63,34 +63,35 @@
 								<figure>
 									<img class="img-fluid w-100" src="{{ event.banner.url }}" alt="">
 									<div class="date">
-                                        {{ event.start_at|date:"d M"}}
+                                        Bientot
 									</div>
 								</figure>
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="content_wrapper">
-									<h4 class="title">
+									<h3 class="title">
 										<a href="/events/event/{{ event.id }}">{{ event.title}}</a>
-									</h4>
+									</h3>
 									<p>
                                         {{ event.adress}}
 									</p>
 									<div class="d-flex count_time justify-content-lg-start justify-content-center" id="clockdiv1">
 										<div class="single_time">
-											<h4 class="days">552</h4>
-											<p>Jours</p>
+											<h4>{{event.start_at|date:'d'}}</h4>
+
 										</div>
 										<div class="single_time">
-											<h4 class="hours">08</h4>
-											<p>Heures</p>
+											<h4>{{event.start_at|date:'F'}}</h4>
+
 										</div>
 										<div class="single_time">
-											<h4 class="minutes">45</h4>
-											<p>Minutes</p>
+											<h4>{{event.start_at|date:'Y'}}</h4>
+
 										</div>
 									</div>
 
 								</div>
+							</div>
 							</div>
 						</div>
 					</div>

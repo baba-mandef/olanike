@@ -23,7 +23,7 @@ class Category(models.Model):
 
 class Don(models.Model):
     id = models.AutoField(primary_key=True)
-    fullname = models.CharField()
+    fullname = models.CharField(max_length=255)
     email = models.EmailField()
     donation = models.IntegerField()
     quote = models.TextField()
