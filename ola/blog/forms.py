@@ -7,7 +7,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body', 'author_name', 'author_pic')
         labels = {
-            'body': 'Your comment',
-            'author_name': 'Your name',
-            'author_pic' : 'Your Picture'
+            'body': 'Votre commentaire',
+            'author_name': 'Votre nom',
+            'author_pic' : 'Votre photo'
         }
