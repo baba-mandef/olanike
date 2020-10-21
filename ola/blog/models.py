@@ -25,7 +25,7 @@ class Comment(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     body = models.TextField()
     author_name = models.CharField(max_length=20)
-    author_pic = models.ImageField(upload_to='comments_pics')
+    author_pic = models.ImageField(upload_to='comments_pics', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
