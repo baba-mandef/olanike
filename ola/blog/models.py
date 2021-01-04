@@ -14,6 +14,8 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True,)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
+    published = models.BooleanField(default=True)
+    slug = models.SlugField(max_length=255, unique=True)
     view = models.IntegerField(default=0)
 
     def __str__(self):
@@ -25,6 +27,7 @@ class Comment(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     body = models.TextField()
     author_name = models.CharField(max_length=20)
+    author_mail = models.EmailField()
     author_pic = models.ImageField(default='comments_pics/d.png')
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -40,6 +43,14 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+
+class counter(models.Model):
+    id = models.AutoField(primary_key=True)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    ipAdress = models.GenericIPAddressField()
+
+    def __str__(self):
+        return f'{self.post.name} read by {self.ipAdress}'
 
 
 class Category(models.Model):
