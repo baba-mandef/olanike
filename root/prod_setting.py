@@ -1,8 +1,8 @@
 from root.settings import *
 import dj_database_url
 
-DEBUG = False
-TEMPLATES_DEBUG = False
+DEBUG = os.environ.get('DEBUG')
+TEMPLATES_DEBUG = os.environ.get('TEMPLATE_DEBUG')
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
