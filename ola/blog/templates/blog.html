@@ -58,13 +58,13 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="/blog/post/{{ post.post_id }}">
+                                <a class="d-inline-block" href="/blog/post/{{ post.slug }}">
                                     <h2>{{ post.title }}</h2>
                                 </a>
                                 <p>{{ post.body | truncatewords:30}}</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="posts/{{ post.category }}"><i class="fa fa-user"></i>{{ post.category }}</a></li>
-                                    <li><a href="#"><i class="ti-eye mr-2"></i> {{ post.view }} lecture(s)</a></li>
+                                    <li><a href="posts/{{ post.category }}"><i class="fa fa-folder"></i>{{ post.category }}</a></li>
+                                    <li><a href="/blog/post/{{ category.slug }}"><i class="ti-eye mr-2"></i> {{ post.view }} lecture(s)</a></li>
                                 </ul>
                             </div>
                         </article>
@@ -127,7 +127,7 @@
                             <div class="media post_item">
                                 <img src="{{ last.banner.url }}" height="80" width="80" alt="post">
                                 <div class="media-body">
-                                    <a href="/blog/post/{{ last.post_id }}">
+                                    <a href="/blog/post/{{ last.slug }}">
                                         <h3>{{ last.title}}</h3>
                                     </a>
                                     <p>{{ last.created_at|date:'d F Y'}}</p>

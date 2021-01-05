@@ -58,13 +58,13 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="/blog/post/{{ category.post_id }}">
+                                <a class="d-inline-block" href="/blog/post/{{ category.slug }}">
                                     <h2>{{ category.title }}</h2>
                                 </a>
                                 <p>{{ category.body | truncatewords:35}}</p>
                                 <ul class="blog-info-link">
-                                    <li><a><i class="fa fa-user"></i>{{ category.category }}</a></li>
-                                    <li><a href="#"><i class="fa fa-comment-o"></i> 03 Commentaires</a></li>
+                                    <li><a><i class="fa fa-envelope"></i>{{ category.category }}</a></li>
+                                    <li><a href="/blog/post/{{ category.slug }}/#comment"><i class="fa fa-comment-o"></i> 03 Commentaires</a></li>
                                 </ul>
                             </div>
                         </article>

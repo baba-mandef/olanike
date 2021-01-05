@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from ola.blog.models import Post, Category, Comment, Author
+from ola.blog.models import (Post, Category, Comment, Author, Counter)
 from ola.blog.forms import CommentForm
+from ola.utils.ip import get_ip
 
 
 def posts(request):
@@ -25,12 +26,14 @@ def categories(request, cate):
     return render(request, 'category.html', {'category': category})
 
 
-def details(request, id):
+def details(request, slug):
     # post = Post.objects.get(pk=id)
-    post = get_object_or_404(Post, post_id=id)
+    post = get_object_or_404(Post, slug=slug)
     last = Post.objects.order_by('created_at')[:5]
     cat = Category.objects.all()
-    comments = Comment.objects.filter(post=id)
+    ip = get_ip(request)
+    check_ip = Counter.objects.filter(ipAdress=ip)
+    comments = Comment.objects.filter(post__slug=slug)
     form = CommentForm
     if request.method == 'POST':
         form = CommentForm(data=request.POST)
@@ -39,6 +42,12 @@ def details(request, id):
             new_comment.post = post
             new_comment.save()
     author = Author.objects.get(pk=post.author.pk)
-    post.view = post.view+1
-    post.save()
+    if check_ip:
+        post.view = post.view
+        post.save()
+    elif not check_ip and post.published:
+        new_ip = Counter(post=post, ipAdress=ip)
+        new_ip.save()
+        post.view = post.view+1
+        post.save()
     return render(request, 'details.html', {'post': post, 'last': last, 'cat': cat, 'comments': comments, 'form': form, 'author': author})

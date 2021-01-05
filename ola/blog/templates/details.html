@@ -55,13 +55,13 @@
             <div class="blog_details">
               <h2>{{ post.title }}</h2>
               <ul class="blog-info-link mt-3 mb-4">
-                <li><a href="#"><i class="fa fa-user"></i>{{ post.category}}</a></li>
+                <li><a href="#"><i class="fa fa-folder"></i>{{ post.category}}</a></li>
                 <li><a href="#comment"><i class="fa fa-comment-o"></i> {{ comments|length }} commentaires</a></li>
               </ul>
               <p class="excert" style="text-align: justify">
                   {{post.body}}
               </p>
-              </p>
+
             </div>
           </div>
           <div class="navigation-top">
@@ -191,7 +191,7 @@
                             <div class="media post_item">
                                 <img src="{{ last.banner.url }}" height="80" width="80" alt="post">
                                 <div class="media-body">
-                                    <a href="/blog/post/{{ last.post_id }}">
+                                    <a href="/blog/post/{{ last.slug }}">
                                         <h3>{{ last.title}}</h3>
                                     </a>
                                     <p>{{ last.created_at|date:'d F Y'}}</p>

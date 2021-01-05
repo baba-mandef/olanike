@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ola.cause',
     'cloudinary_storage',
     'cloudinary',
+    'tinymce',
 ]
 
 MIDDLEWARE = [

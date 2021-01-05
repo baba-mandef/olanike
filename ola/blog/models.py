@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 
 class Post(models.Model):
@@ -8,7 +9,7 @@ class Post(models.Model):
     """
     post_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
-    body = models.TextField()
+    body = HTMLField()
     banner = models.ImageField(upload_to='blog_pics')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)  # post category
     created_at = models.DateTimeField(auto_now_add=True,)
@@ -44,13 +45,13 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-class counter(models.Model):
+class Counter(models.Model):
     id = models.AutoField(primary_key=True)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
     ipAdress = models.GenericIPAddressField()
 
     def __str__(self):
-        return f'{self.post.name} read by {self.ipAdress}'
+        return f'{self.post.title} read by {self.ipAdress}'
 
 
 class Category(models.Model):
