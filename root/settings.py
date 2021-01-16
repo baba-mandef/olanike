@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.31.47.31', '127.0.0.1', 'ip-172-31-47-31.eu-central-1.compute.internal']
+ALLOWED_HOSTS = ['127.0.0.1', '18.185.164.205', 'ec2-18-185-164-205.eu-central-1.compute.amazonaws.com']
 
 
 # Application definition
@@ -87,8 +87,8 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DBNAME'),
-        'USER': os.environ.get('USER'),
+        'NAME': 'ola',
+        'USER': 'shadowcompiler',
         'PASSWORD': os.environ.get('PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5432',
