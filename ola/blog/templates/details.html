@@ -55,11 +55,11 @@
             <div class="blog_details">
               <h2>{{ post.title }}</h2>
               <ul class="blog-info-link mt-3 mb-4">
-                <li><a href="#"><i class="fa fa-folder"></i>{{ post.category}}</a></li>
+                <li><a href="/blog/category/{{post.category}}"><i class="fa fa-folder"></i>{{ post.category}}</a></li>
                 <li><a href="#comment"><i class="fa fa-comment-o"></i> {{ comments|length }} commentaires</a></li>
               </ul>
-              <p class="excert" style="text-align: justify">
-                  {{post.body}}
+              <p class="excert">
+                  {{post.body|safe}}
               </p>
 
             </div>
@@ -128,9 +128,9 @@
                     <div class="d-flex justify-content-between">
                       <div class="d-flex align-items-center">
                         <h5>
-                          <a href="#">{{ comment.author_name}}</a>
+                         {{ comment.author_name}}
                         </h5>
-                        <p class="date">{{ comment.created_at|date:'d F Y'}} a {{ comment.created_at|date:'H' }} h {{ comment.created_at|date:'i' }}  </p>
+                        <p class="date">{{ comment.created_at|date:'d F Y'}} à {{ comment.created_at|date:'H' }} h {{ comment.created_at|date:'i' }} min </p>
                       </div>
 
 
@@ -171,7 +171,7 @@
         </div>
         <div class="col-lg-4">
                     <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget">
+                        <!--<aside class="single_sidebar_widget search_widget">
                             <form action="#">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
@@ -183,7 +183,7 @@
                                 </div>
                                 <button class="button primary-btn w-100" type="submit">Rechercher</button>
                             </form>
-                        </aside>
+                        </aside>-->
 
                         <aside class="single_sidebar_widget popular_post_widget">
                             <h3 class="widget_title">Article récents</h3>
@@ -204,7 +204,7 @@
                             <ul class="list">
                                 {% for cat in cat %}
                                     <li>
-                                    <a href="/blog/posts/{{ cat }}">{{ cat }}</a>
+                                    <a href="/blog/category/{{ cat }}">{{ cat }}</a>
                                 </li>
                                 {% endfor %}
                             </ul>

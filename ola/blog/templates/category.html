@@ -63,13 +63,13 @@
                                 </a>
                                 <p>{{ category.body | truncatewords:35}}</p>
                                 <ul class="blog-info-link">
-                                    <li><a><i class="fa fa-envelope"></i>{{ category.category }}</a></li>
-                                    <li><a href="/blog/post/{{ category.slug }}/#comment"><i class="fa fa-comment-o"></i> 03 Commentaires</a></li>
-                                </ul>
+                                    <li><a><i class="fa fa-folder"></i>{{ category.category }}</a></li>
+																		<li><i class="ti-eye mr-2"></i>{{ category.view }} lecture(s)</li>
+																	</ul>
                             </div>
                         </article>
                             {% empty %}
-                            <h4>Aucun article</h4>
+                            <h4>Aucun article disponible</h4>
                     {% endfor %}
 
                         <nav class="blog-pagination justify-content-center d-flex">
