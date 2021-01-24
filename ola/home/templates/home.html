@@ -2,7 +2,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="zxx" class="no-js" xmlns="http://www.w3.org/1999/html">
 
 <head>
 	<!-- Mobile Specific Meta -->
@@ -34,19 +34,17 @@
 		<div class="container">
 			<div class="row align-items-end">
 				<div class="col-lg-5">
-					<div class="about_details lite_bg">
-						<h2>Nous sommes une
-							Organisation non gouvernementale </h2>
+					<div class="about_details lite_bg" id="who">
+						<h2>Qui sommes-nous?</h2>
 						<p class="top_text">
-							Nous luttons pour l'épanouissement de l'enfant africain.
+							Olanikè Children's Foundation.
 						</p>
 						<p class="mb-0">
-							Nous luttons pour l'épanouissement de l'enfant africain.
-							Nous luttons pour l'épanouissement de l'enfant africain.
-							Nous luttons pour l'épanouissement de l'enfant africain.
-							Nous luttons pour l'épanouissement de l'enfant africain.
-							Nous luttons pour l'épanouissement de l'enfant africain.
-							Nous luttons pour l'épanouissement de l'enfant africain.
+							<strong>Olanikè Children's Foundation</strong> est une organisation qui fait de l’enfance sa priorité.
+							En tant qu’acteurs sociaux, nous avons le devoir non seulement
+							de changer les choses pour chaque victime, mais surtout la
+							responsabilité de faire en sorte que chaque enfant participe
+							activement à ce changement.
 						</p>
 						<!-- <a href="#" class="primary-btn mt-5">
 							Lire plus
@@ -131,82 +129,41 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					<div class="section-title" id="causes">
-						<h2><span>Objectifs</span> principals</h2>
+						<h2><span>Nos</span> objectifs</h2>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
 
+				{% for cause in last_cause%}
 				<div class="col-lg-4 col-md-6">
 					<div class="card single-popular-cause">
 						<div class="card-body">
 							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c11.jpg" alt="Card image cap">
+								<img class="card-img-top img-fluid" src="{{cause.banner.url}}" alt="Card image cap">
 							</figure>
 							<div class="card_inner_body">
-								<div class="tag">Education</div>
-								<h4 class="card-title">Constructin d'un école dans la commune d'adapklame</h4>
+								<div class="tag">{{cause.category}}</div>
+								<h4 class="card-title">{{cause.title}}</h4>
 								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
+									<p>Fonds: {{cause.level}} $</p>
+									<p><span>Objectif: {{cause.goal}} $</span></p>
 								</div>
 								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 89 Donnateurs</p>
+									<a href="/causes/cause/{{cause.slug}}" class="primary-btn">Faire un don</a>
+									<p><span class="ti-heart mr-1"></span> {{cause.don_number}} Donnateurs</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c12.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Social</div>
-								<h4 class="card-title">Achat de vivres à l'orphelina d'aglogbe.</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 80 Donnateur</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c11.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Santé</div>
-								<h4 class="card-title">Construction d'un hopital pour enfant à savalou</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 110 Donnateurs</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+				{%endfor%}
 		</div>
 	</section>
 	<!--================ End Popular Causes Area =================-->
 
-	<!--================ Start callto Area =================-->
+	<!--================ Start callto Area =================
 	<section class="callto-area section-gap relative">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
@@ -215,9 +172,9 @@
 					<p class="top_text">Rejoignez-nous</p>
 					<div class="call-wrap mx-auto">
 						<h1>Nous avons besoin de vous</h1>
-						<!-- <a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?v=_C5vCGB8Xx0">
+						 <a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?v=_C5vCGB8Xx0">
 									<span></span>
-								</a> -->
+								</a>
 						<p>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes</p>
 						<a href="#" class="primary-btn mt-5">
 							Rejoindre
@@ -227,7 +184,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!--================ End callto Area =================-->
 
 	<!--================ Start Upcoming Event Area =================-->
@@ -257,34 +214,38 @@
 							<div class="col-lg-6 col-md-6">
 								<div class="content_wrapper">
 									<h3 class="title">
-										<a href="/events/event/{{ event.id }}">{{ event.title}}</a>
+										<a href="/events/event/{{ event.slug }}">{{ event.title}}</a>
 									</h3>
 									<p>
                                         {{ event.adress}}
 									</p>
 									<div class="d-flex count_time justify-content-lg-start justify-content-center" id="clockdiv1">
 										<div class="single_time">
-											<h4>{{event.start_at|date:'d'}}</h4>
+											<h4>{{event.start_at|date:'d'}} {{event.start_at|date:'F'}} {{event.start_at|date:'Y'}}</h4>
 
 										</div>
-										<div class="single_time">
-											<h4>{{event.start_at|date:'F'}}</h4>
+									<!--	<div class="single_time">
+											<h4></h4>
 
 										</div>
 										<div class="single_time">
 											<h4>{{event.start_at|date:'Y'}}</h4>
 
-										</div>
+										</div>!-->
 									</div>
-
+													<a href="/events/event/{{ event.slug }}" class="primary-btn2">Voir plus</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+
+								{% empty %}
+								<h3> Aucun évenement disponible</h3>
                 {% endfor %}
 
-			</div>
+
         </div>
 	</section>
 	<!--================ End Upcoming Event Area =================-->
@@ -295,13 +256,16 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-12">
 					<div class="home-blog-left">
-						<h2>Nos derniers articles</h2>
+						<h2>Nos articles récents</h2>
 						<p>
-							>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes
-							>Rejoignez notre famille pour apporter le sourir et la joie dans le coeur de ses ames innocentes>
+							Enfants déscolarisés, placés, maltraités, exploités,
+                            précocement mariés… Ce sont autant de problèmes auxquels
+                            se trouve confrontée l’enfance africaine. Même si la société
+                            essaye tant que bien que mal de faire face à ces problèmes,
+                            il reste tant de chemin à parcourir.
 						</p>
-						<a href="/ola/blog" class="primary-btn2">Voir plus</a>
 					</div>
+                    <a href="/blog" class="primary-btn2">Voir plus</a>
 				</div>
                 {% for last in latest %}
 				<div class="col-lg-4 col-md-6 single-blog">
@@ -310,12 +274,12 @@
 					</div>
 					<div class="single-blog-info">
 						<p class="tag"><span>{{ last.category }}</span><span> {{ last.created_at|date:'d F Y' }}</span></p>
-						<a href="/blog/post/{{ last.post_id }}">
+						<a href="/blog/post/{{ last.slug }}">
 							<h4>{{ last.title}}</h4>
 						</a>
                         {% if last.view == 0 %}
 						<div class="meta-bottom d-flex">
-							<a href="/blog/post/{{ last.post_id }}" class="mr-3">Lire cet article</a>
+							<a href="/blog/post/{{ last.slug }}" class="mr-3">Lire cet article</a>
 						</div>
                             {% elif last.view == 1%}
                              <div class="meta-bottom d-flex">
