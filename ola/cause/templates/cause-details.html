@@ -1,0 +1,94 @@
+{% extends 'layouts/cause-base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>OLA</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:300,400" rel="stylesheet">
+</head>
+
+<body>
+
+	{% block banner %}
+	<!--================ start banner Area =================-->
+	<section class="banner-area relative">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row justify-content-lg-end align-items-center banner-content">
+				<div class="col-lg-5">
+					<h1 class="text-white">Faire un don</h1>
+					<p>Prenez rendez-vous</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End banner Area =================-->
+    {% endblock %}
+    {% block main %}
+	<!--================ Start Recent Event Area =================-->
+	<section class="event_details section-gap-top">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<img src="{{ cause.banner.url }}" alt="" class="img-fluid">
+				</div>
+			</div>
+
+x
+			<div class="event_content">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="right_content">
+							<h2>{{ cause.title}}</h2>
+							<h4 class="mb-20 mt-40">Description</h4>
+							<p style="text-align: justify">
+
+                                {{ cause.description|safe }}
+
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-2 mt-lg-0 mt-5">
+						<div class="left_content">
+							<div class="mb-40">
+								<h5>
+									<img src="{%static "img/momo.png" %}">
+								</h5>
+								<h5>+229 97894637</h5>
+
+							</div>
+
+							<div class="mb-40">
+								<h5>
+									<img src="{%static "img/moov.png" %}">
+								</h5>
+								<h5>+229 98879049</h5>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Recent Event Area =================-->
+{% endblock %}
+</body>
+
+</html>
