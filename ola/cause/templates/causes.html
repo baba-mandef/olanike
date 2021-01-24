@@ -8,7 +8,7 @@
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="img/fav.png">
 	<!-- Author Meta -->
-	
+
 	<!-- Meta Description -->
 	<meta name="description" content="">
 	<!-- Meta Keyword -->
@@ -47,210 +47,45 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					<div class="section-title" id="causes">
-						<h2><span>Objectifs</span> principals</h2>
+						<h2><span>Objectifs</span> principaux</h2>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
+		{%for cause in causes%}
 				<div class="col-lg-4 col-md-6">
 					<div class="card single-popular-cause">
 						<div class="card-body">
 							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c11.jpg" alt="Card image cap">
+								<img class="card-img-top img-fluid" src="{{cause.banner.url}}" alt="Card image cap">
 							</figure>
 							<div class="card_inner_body">
-								<div class="tag">Education</div>
-								<h4 class="card-title">Constructin d'un école dans la commune d'adapklame</h4>
+								<div class="tag">{{cause.category}}</div>
+								<h4 class="card-title">{{cause.title}}</h4>
 								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
+									<p>Fonds: {{cause.level}}</p>
+									<p><span>Objectif: {{cause.goal}}</span></p>
 								</div>
 								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 89 Donnateurs</p>
+									<a href="/causes/cause/{{ cause.slug }}" class="primary-btn">Faire un don</a>
+									<p><span class="ti-heart mr-1"></span> {{cause.don_number}} Donnateur(s)</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c12.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Social</div>
-								<h4 class="card-title">Achat de vivres à l'orphelina d'aglogbe.</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 80 Donnateur</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c11.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Santé</div>
-								<h4 class="card-title">Construction d'un hopital pour enfant à savalou</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 110 Donnateurs</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+		{%empty%}
 
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c11.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Santé</div>
-								<h4 class="card-title">Construction d'un hopital pour enfant à savalou</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 110 Donnateurs</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			  <h4>Aucune cause disponible</h4>
 
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c11.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Santé</div>
-								<h4 class="card-title">Construction d'un hopital pour enfant à savalou</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 110 Donnateurs</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c11.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Santé</div>
-								<h4 class="card-title">Construction d'un hopital pour enfant à savalou</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 110 Donnateurs</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c12.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Social</div>
-								<h4 class="card-title">Achat de vivres à l'orphelina d'aglogbe.</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 80 Donnateur</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c12.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Social</div>
-								<h4 class="card-title">Achat de vivres à l'orphelina d'aglogbe.</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 80 Donnateur</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="card single-popular-cause">
-						<div class="card-body">
-							<figure>
-								<img class="card-img-top img-fluid" src="img/causes/c12.jpg" alt="Card image cap">
-							</figure>
-							<div class="card_inner_body">
-								<div class="tag">Social</div>
-								<h4 class="card-title">Achat de vivres à l'orphelina d'aglogbe.</h4>
-								<div class="d-flex justify-content-between raised_goal">
-									<p>Fonds: $1533</p>
-									<p><span>Objectif: $2500</span></p>
-								</div>
-								<div class="d-flex justify-content-between donation align-items-center">
-									<a href="#" class="primary-btn">Faire un don</a>
-									<p><span class="ti-heart mr-1"></span> 80 Donnateur</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+		{%endfor%}
 
 			</div>
 		</div>
 
 		<nav class="blog-pagination justify-content-center d-flex">
-			<ul class="pagination">
+			<!-- <ul class="pagination">
 				<li class="page-item">
 					<a href="#" class="page-link" aria-label="Previous">
 						<span aria-hidden="true">
@@ -271,11 +106,11 @@
 						</span>
 					</a>
 				</li>
-			</ul>
+			</ul> -->
 		</nav>
 
-		
-		
+
+
 	</section>
 
     {% endblock %}
