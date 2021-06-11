@@ -1,6 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
-from lib.core.functions import slugifyer
+from xlib.core.functions import slugifyer
 
 
 class PostManager(models.Manager):
