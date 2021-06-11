@@ -1,5 +1,13 @@
 from django.db import models
 from tinymce.models import HTMLField
+from lib.core.functions import slugifyer
+
+
+class PostManager(models.Manager):
+    def create(self, *args, **kwargs):
+        if 'slug' in kwargs:
+            kwargs['slug'] = slugifyer(kwargs['title'])
+        super(PostManager, self).create(*args, kwargs)
 
 
 class Post(models.Model):
@@ -16,7 +24,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
     published = models.BooleanField(default=True)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True,)
     view = models.IntegerField(default=0)
 
     def __str__(self):
