@@ -17,8 +17,19 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>OLA</title>
+	{% block social %}
+	<title>Olanike children foundation </title>
 
+	<meta property="og:title" content="{{cause.title}}" />
+		<meta property="og:image" content="{{cause.banner.url}}" />
+		<meta property="og:url" content="olanike-chidren.com" />
+		<meta property="description" content="Olanikè Children's Foundation est une organisation qui fait de l’enfance sa priorité. En tant qu’acteurs sociaux, nous avons le devoir non seulement de changer les choses pour chaque victime, mais surtout la responsabilité de faire en sorte que chaque enfant participe activement à ce changement" />
+		<meta property="og:site_name" content="Olanike children's foundation"/>
+		<meta name="twitter:title" content="{{cause.title}}" />
+		<meta name="twitter:image" content="{{cause.banner.url}}" />
+		<meta name="twitter:url" content="olanike-children.com" />
+		<meta name="twitter:card" content="summary_large_image">
+	{% endblock %}
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:300,400" rel="stylesheet">
 </head>
 
