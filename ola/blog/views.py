@@ -32,7 +32,7 @@ def details(request, slug):
     last = Post.objects.order_by('created_at')[:5]
     cat = Category.objects.all()
     ip = get_ip(request)
-    check_ip = Counter.objects.filter(ipAdress=ip)
+    check_ip = Counter.objects.filter(ipAdress=ip, post=post)
     comments = Comment.objects.filter(post__slug=slug)
     form = CommentForm
     if request.method == 'POST':
