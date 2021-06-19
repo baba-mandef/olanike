@@ -60,7 +60,7 @@
                                 <a class="d-inline-block" href="/blog/post/{{ category.slug }}">
                                     <h2>{{ category.title }}</h2>
                                 </a>
-                                <p>{{ category.body | truncatewords:35}}</p>
+                                <p>{{ category.body | truncatewords:35 | safe}}</p>
                                 <ul class="blog-info-link">
                                     <li><a><i class="fa fa-folder"></i>{{ category.category }}</a></li>
 																		<li><i class="ti-eye mr-2"></i>{{ category.view }} lecture(s)</li>
