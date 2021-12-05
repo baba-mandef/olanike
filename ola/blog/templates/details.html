@@ -54,7 +54,16 @@
               <h2>{{ post.title }}</h2>
               <ul class="blog-info-link mt-3 mb-4">
                 <li><a href="/blog/category/{{post.category}}"><i class="fa fa-folder"></i>{{ post.category}}</a></li>
-                <li><a href="#comment"><i class="fa fa-comment-o"></i> {{ comments|length }} commentaires</a></li>
+               
+  
+                  {% if comments|length == 0 %} 
+                   <li><a href="#comment"><i class="fa fa-comment-o"> </i> Aucun commentaire</a></li>
+                  {%elif comments|length < 2%}
+                   <li><a href="#comment"><i class="fa fa-comment-o"> </i> 1 commentaire</a></li>
+                   {%else%}
+                    <li><a href="#comment"><i class="fa fa-comment-o"> </i> commentaires</a></li>
+                  {%endif%}
+                  
               </ul>
               <div>
                   {{post.body|safe}}
