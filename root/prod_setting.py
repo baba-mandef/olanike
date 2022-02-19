@@ -6,7 +6,7 @@ TEMPLATES_DEBUG = os.environ.get('TEMPLATE_DEBUG')
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-ALLOWED_HOSTS = ['olanike.herokuapp.com', 'olanike-children.com']
+ALLOWED_HOSTS = ['olanike.org', 'www.olanike.org', 'https.//olanike.org', ]
 DATABASES['default'] = dj_database_url.config()
 
 CLOUDINARY_STORAGE = {
